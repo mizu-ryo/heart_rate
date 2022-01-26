@@ -1,26 +1,74 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Heart Rate Sensor</title>
-  </head>
-  <body>
-    <script src="app.js"></script>
-    <h3>Device connect</h3>
-    <button onclick="onStartButtonClick()">start</button>
-    <div id='device_name'>device name</div>
-    <h3>Device disconnect</h3>
-    <button onclick="onStopButtonClick()">stop</button>
-    <h3>Heart Rate</h3>
-    <div id='heart_rate_now'>0</div>
-    <div id='ex_time'>0</div>
-    <button onclick="onDownloadClick()">download</button>
-    <button onclick="ontestClick()">test</button>
-    <button onclick="ontrueClick()">true</button>
-    <button onclick="onexstartClick()">ex-start</button>
-    <button onclick="onexstopClick()">ex-stop</button>
-    <div id='date'>date</div>
-    <button onclick="ondateClick()">date</button>
-    <textarea id="log" rows="5" cols="30"></textarea>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Heart Rate Sensor Blutooth Connect</title>
+</head>
+
+<body>
+  <script src="app.js"></script>
+  <h1>Heart Rate Sensor Bluetooth Connect</h1>
+  <h2>Device</h2>
+  <button onclick="onStartButtonClick()">connect</button>
+  <button onclick="onStopButtonClick()">disconnect</button>
+  <p></p>
+  <table>
+    <tr>
+      <td>device name:</td>
+      <td>
+        <div id='device_name'></div>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Heart Rate</h2>
+  <table>
+    <tr>
+      <td>now:</td>
+      <td>
+        <div id='heart_rate_now'>0</div>
+      </td>
+      <td>bpm</td>
+    </tr>
+    <tr>
+      <td>ave:</td>
+      <td><div id='heart_rate_ave'>0</div></td>
+      <td>bpm</td>
+    </tr>
+    <tr>
+      <td>max:</td>
+      <td><div id='heart_rate_max'>0</div></td>
+      <td>bpm</td>
+    </tr>
+    <tr>
+      <td>min:</td>
+      <td><div id='heart_rate_min'>0</div></td>
+      <td>bpm</td>
+    </tr>
+  </table>
+
+  <h2>Experiment</h2>
+  <div id='ex_time'>00:00</div>
+  <p></p>
+  <table>
+    <tr>
+      <td>
+        <button onclick="onExStartClick()">start</button>
+      </td>
+      <td>
+        <button onclick="onExStopClick()">stop</button>
+      </td>
+      <td>
+        <button onclick="ontrueClick()">flag</button>
+      </td>
+    </tr>
+  </table>
+  <p></p>
+  <textarea id="log" rows="10" cols="30">ex_time,heart_rate,flg,</textarea>
+
+  <h2>Download</h2>
+  <button onclick="onDownloadClick()">download</button>
+</body>
+
 </html>
