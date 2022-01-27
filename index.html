@@ -8,16 +8,24 @@
 
 <body>
   <script src="app.js"></script>
+  
   <h1>Heart Rate Sensor Bluetooth Connect</h1>
+
   <h2>Device</h2>
-  <button onclick="onStartButtonClick()">connect</button>
-  <button onclick="onStopButtonClick()">disconnect</button>
+  <button onclick="onDeviceConnectClick()">connect</button>
+  <button onclick="onDeviceDisconnectClick()">disconnect</button>
   <p></p>
   <table>
     <tr>
       <td>device name:</td>
       <td>
         <div id='device_name'></div>
+      </td>
+    </tr>
+    <tr>
+      <td>device status:</td>
+      <td>
+        <div id='device_status'></div>
       </td>
     </tr>
   </table>
@@ -33,42 +41,61 @@
     </tr>
     <tr>
       <td>ave:</td>
-      <td><div id='heart_rate_ave'>0</div></td>
+      <td>
+        <div id='heart_rate_ave'>0</div>
+      </td>
       <td>bpm</td>
     </tr>
     <tr>
       <td>max:</td>
-      <td><div id='heart_rate_max'>0</div></td>
+      <td>
+        <div id='heart_rate_max'>0</div>
+      </td>
       <td>bpm</td>
     </tr>
     <tr>
       <td>min:</td>
-      <td><div id='heart_rate_min'>0</div></td>
+      <td>
+        <div id='heart_rate_min'>0</div>
+      </td>
       <td>bpm</td>
     </tr>
   </table>
 
   <h2>Experiment</h2>
-  <div id='ex_time'>00:00</div>
-  <p></p>
   <table>
     <tr>
       <td>
-        <button onclick="onExStartClick()">start</button>
+        <div id='ex_time'>00:00</div>
       </td>
       <td>
-        <button onclick="onExStopClick()">stop</button>
-      </td>
-      <td>
-        <button onclick="ontrueClick()">flag</button>
+        <canvas id="cv" width="30" height="30"></canvas>
       </td>
     </tr>
   </table>
+
   <p></p>
-  <textarea id="log" rows="10" cols="30">ex_time,heart_rate,flg,</textarea>
+  <button onclick="onExStartClick()">start</button>
+  <button onclick="onExStopClick()">stop</button>
+  <p></p>
+  <button onclick="onCheckPointClick()">check point</button>
+  <p></p>
+  <textarea id="ex_log" rows="5" cols="25">ex_time,heart_rate,flg</textarea>
+  <br>
+  <textarea id="check_point_log" rows="5" cols="25">check point log</textarea>
 
   <h2>Download</h2>
-  <button onclick="onDownloadClick()">download</button>
+  <div>
+    <button onclick="onDownloadClick()">download</button>
+  </div>
+
+  <script>
+    var ctx = document.getElementById("cv").getContext("2d");
+    ctx.fillStyle = 'gray';
+    ctx.beginPath();
+    ctx.arc(15, 15, 10, 0, Math.PI * 2, true);
+    ctx.fill();
+  </script>
 </body>
 
 </html>
